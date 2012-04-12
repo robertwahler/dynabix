@@ -1,4 +1,4 @@
-require 'basic_gem'
+require 'dynabix'
 require 'rspec/core'
 require 'aruba/api'
 require 'aruba_helper'

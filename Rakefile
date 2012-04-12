@@ -32,7 +32,7 @@ namespace :doc do
 
   YARD::Rake::YardocTask.new(:generate) do |yt|
     yt.options = ['--output-dir', doc_destination,
-                  '--title', "BasicGem #{doc_version} Documentation",
+                  '--title', "Dynabix #{doc_version} Documentation",
                   '--main', "README.markdown"
                  ]
   end

@@ -1,5 +1,5 @@
 @announce
-Feature: BasicGem
+Feature: Dynabix
 
   This is a placeholder
 

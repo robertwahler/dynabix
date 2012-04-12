@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BasicGem do
+describe Dynabix do
 
   before(:each) do
     @filename = 'input.txt'

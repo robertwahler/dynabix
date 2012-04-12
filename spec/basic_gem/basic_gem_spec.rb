@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe BasicGem do
+describe Dynabix do
 
   describe 'version' do
 
     it "should return a string formatted '#.#.#'" do
-      BasicGem::version.should match(/(^[\d]+\.[\d]+\.[\d]+$)/)
+      Dynabix::version.should match(/(^[\d]+\.[\d]+\.[\d]+$)/)
     end
 
   end

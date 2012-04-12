@@ -18,17 +18,17 @@ Gem::Specification.new do |s|
     gemfiles = `git ls-files`
   end
 
-  s.name        = "basic_gem"
+  s.name        = "dynabix"
   s.version     = File.open(File.join(File.dirname(__FILE__), 'VERSION'), "r") { |f| f.read }
   s.platform    = Gem::Platform::RUBY
   s.authors     = []
   s.email       = []
-  s.homepage    = "http://rubygems.org/gems/basic_gem"
+  s.homepage    = "http://rubygems.org/gems/dynabix"
   s.summary     = "TODO: Write a gem summary"
   s.description = "TODO: Write a gem description"
 
   s.required_rubygems_version = ">= 1.3.6"
-  s.rubyforge_project         = "basic_gem"
+  s.rubyforge_project         = "dynabix"
 
   s.add_development_dependency "bundler", ">= 1.0.14"
   s.add_development_dependency "rspec", ">= 2.6.0"
@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.rdoc_options     = [
-                         '--title', 'BasicGem Documentation',
+                         '--title', 'Dynabix Documentation',
                          '--main', 'README.markdown',
                          '--line-numbers',
                          '--inline-source'

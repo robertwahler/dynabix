@@ -2,7 +2,7 @@
 require 'rbconfig'
 
 # Master namespace
-module BasicGem
+module Dynabix
 
   # Contents of the VERSION file
   #
@@ -17,7 +17,7 @@ module BasicGem
   end
 
   # Platform constants
-  unless defined?(BasicGem::WINDOWS)
+  unless defined?(Dynabix::WINDOWS)
     WINDOWS = Config::CONFIG['host_os'] =~ /mswin|mingw/i
     CYGWIN = Config::CONFIG['host_os'] =~ /cygwin/i
   end

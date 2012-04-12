@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe BasicGem do
+describe Dynabix do
 
   def load_gemspec
-    filename = File.expand_path('../../../basic_gem.gemspec', __FILE__)
+    filename = File.expand_path('../../../dynabix.gemspec', __FILE__)
     eval(File.read(filename), nil, filename)
   end
 
@@ -11,8 +11,8 @@ describe BasicGem do
 
     it "should return the gem VERSION" do
       @gemspec = load_gemspec
-      BasicGem::version.should_not be_nil
-      @gemspec.version.to_s.should == BasicGem::version
+      Dynabix::version.should_not be_nil
+      @gemspec.version.to_s.should == Dynabix::version
     end
 
     describe 'files' do
