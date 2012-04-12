@@ -21,11 +21,11 @@ Gem::Specification.new do |s|
   s.name        = "dynabix"
   s.version     = File.open(File.join(File.dirname(__FILE__), 'VERSION'), "r") { |f| f.read }
   s.platform    = Gem::Platform::RUBY
-  s.authors     = []
-  s.email       = []
+  s.authors     = ["Robert Wahler"]
+  s.email       = ["robert@gearheadforhire.com"]
   s.homepage    = "http://rubygems.org/gems/dynabix"
-  s.summary     = "TODO: Write a gem summary"
-  s.description = "TODO: Write a gem description"
+  s.summary     = "A Rails 3.x gem for attribute serialization"
+  s.description = "A Rails 3.x gem for attribute serialization"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "dynabix"
