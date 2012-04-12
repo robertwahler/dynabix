@@ -6,12 +6,6 @@ class Thing < ActiveRecord::Base
   metadata_accessor :rv_doors, :rv_windows
 end
 
-class Bar < ActiveRecord::Base
-  has_metadata :bardata
-
-  bardata_accessor :foo
-end
-
 describe Dynabix::Metadata do
 
   describe "has_metadata" do
@@ -25,7 +19,7 @@ describe Dynabix::Metadata do
 
   describe "creating a serializer" do
 
-    context "has_metadata with no params" do
+    context "has_metadata with no params, Ruby 1.8+" do
 
       it "should create a default instance serializer accessor called 'metadata'" do
         defined?(Thing.metadata).should be_false
@@ -49,30 +43,38 @@ describe Dynabix::Metadata do
       end
     end
 
-    context "has_metadata with user defined name of metadata database field 'bardata'" do
+    unless RUBY_VERSION < '1.9'
 
-      it "should create a default instance serializer accessor called 'bardata'" do
-        defined?(Bar.bardata).should be_false
-        thing = Bar.new
-        thing.should be_valid
-        defined?(thing.bardata).should be_true
-        thing.bardata.should == {}
+      class Bar < ActiveRecord::Base
+        has_metadata :bardata
+
+        bardata_accessor :foo
       end
 
-      it "should create a default class level accessor called 'metadata_accessor'" do
-        defined?(Bar.bardata_accessor).should be_true
-        defined?(Bar.foo).should be_false
+      context "has_metadata with user defined name of metadata database field 'bardata', Ruby 1.9+" do
 
-        thing = Bar.new
-        defined?(thing.foo).should be_true
-        thing.bardata[:foo].should be_nil
-        thing.bardata[:foo] = 1
-        thing.bardata[:foo].should == 1
-        thing.foo = 2
-        thing.foo.should == 2
+        it "should create a default instance serializer accessor called 'bardata'" do
+          defined?(Bar.bardata).should be_false
+          thing = Bar.new
+          thing.should be_valid
+          defined?(thing.bardata).should be_true
+          thing.bardata.should == {}
+        end
+
+        it "should create a default class level accessor called 'metadata_accessor'" do
+          defined?(Bar.bardata_accessor).should be_true
+          defined?(Bar.foo).should be_false
+
+          thing = Bar.new
+          defined?(thing.foo).should be_true
+          thing.bardata[:foo].should be_nil
+          thing.bardata[:foo] = 1
+          thing.bardata[:foo].should == 1
+          thing.foo = 2
+          thing.foo.should == 2
+        end
       end
     end
 
   end
-
 end
