@@ -16,4 +16,12 @@ ActiveRecord::Schema.define(:version => 0) do
     t.timestamps
   end
 
+  create_table :foos, :force => true do |t|
+    t.string :description
+    t.text :notes
+    t.text :metadata
+
+    t.timestamps
+  end
+
 end
