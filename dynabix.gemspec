@@ -25,16 +25,19 @@ Gem::Specification.new do |s|
   s.email       = ["robert@gearheadforhire.com"]
   s.homepage    = "http://rubygems.org/gems/dynabix"
   s.summary     = "A Rails 3.x gem for attribute serialization"
-  s.description = "A Rails 3.x gem for attribute serialization"
+  s.description = "A Rails 3.x gem for dynamic metadata via attribute serialization"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "dynabix"
+
+  s.add_dependency "activerecord", "~> 3.0"
 
   s.add_development_dependency "bundler", ">= 1.0.14"
   s.add_development_dependency "rspec", ">= 2.6.0"
   s.add_development_dependency "cucumber", "~> 1.0"
   s.add_development_dependency "aruba", "= 0.4.5"
   s.add_development_dependency "rake", ">= 0.8.7"
+  s.add_development_dependency "sqlite3-ruby", ">= 0.8.7"
 
   # doc generation
   s.add_development_dependency "yard", ">= 0.7.4"

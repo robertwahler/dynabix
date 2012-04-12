@@ -1,5 +1,6 @@
 # require all files here
 require 'rbconfig'
+require 'dynabix/metadata'
 
 # Master namespace
 module Dynabix
