@@ -41,6 +41,7 @@ describe Dynabix::Metadata do
         thing.rv_windows = 2
         thing.rv_windows.should == 2
       end
+
     end
 
     context "has_metadata with attribute params, Ruby 1.8+" do

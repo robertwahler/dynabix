@@ -4,7 +4,7 @@ module Dynabix
   module Metadata
 
     def has_metadata(serializer=:metadata, *attributes)
-      serialize(serializer, Hash)
+      serialize(serializer, HashWithIndifferentAccess)
 
       if RUBY_VERSION < '1.9'
         raise "has_metadata serializer must be named ':metadata', this restriction is lifted in Ruby 1.9+" unless serializer == :metadata
@@ -74,14 +74,14 @@ module Dynabix
     end
 
     def create_reader(serializer, attr)
-      define_method("#{attr}") do
-        self[serializer][attr]
+      define_method("#{attr}".to_sym) do
+        self[serializer][attr.to_sym]
       end
     end
 
     def create_writer(serializer, attr)
-      define_method("#{attr}=") do |value|
-        self[serializer][attr] = value
+      define_method("#{attr}=".to_sym) do |value|
+        self[serializer][attr.to_sym] = value
       end
     end
 
