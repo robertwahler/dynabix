@@ -11,15 +11,7 @@ RSpec::Core::RakeTask.new do |spec|
   spec.pattern = 'spec/**/*_spec.rb'
 end
 
-require 'cucumber/rake/task'
-Cucumber::Rake::Task.new do |t|
-  t.cucumber_opts = %w{}
-end
-
-desc "Run specs, both RSpec and Cucumber"
-task :test => [:spec, :cucumber]
-
-task :default => :test
+task :default => :spec
 
 namespace :doc do
 

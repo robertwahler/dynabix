@@ -22,7 +22,6 @@ Rake tasks
 bundle exec rake -T
 
     rake build             # Build dynabix-0.0.2.gem into the pkg directory
-    rake cucumber          # Run Cucumber features
     rake doc:clean         # Remove generated documenation
     rake doc:generate      # Generate YARD Documentation
     rake doc:undocumented  # List undocumented objects
@@ -30,7 +29,6 @@ bundle exec rake -T
     rake install           # Build and install dynabix-0.0.2.gem into system gems
     rake release           # Create tag v0.0.2 and build and push dynabix-0.0.2.gem to Rubygems
     rake spec              # Run RSpec
-    rake test              # Run specs, both RSpec and Cucumber
 
 Copyright
 ---------
