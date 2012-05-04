@@ -12,14 +12,13 @@ README.markdown
 Rakefile
 TODO.markdown
 VERSION
-cucumber.yml
 dynabix.gemspec
-features/basic_gem.feature
-features/step_definitions/.gitignore
-features/support/env.rb
 lib/dynabix.rb
+lib/dynabix/metadata.rb
 spec/aruba_helper.rb
 spec/basic_gem/aruba_helper_spec.rb
 spec/basic_gem/basic_gem_spec.rb
 spec/basic_gem/gemspec_spec.rb
+spec/dynabix/metadata_spec.rb
+spec/schema.rb
 spec/spec_helper.rb
