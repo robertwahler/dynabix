@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Robert Wahler"]
   s.email       = ["robert@gearheadforhire.com"]
   s.homepage    = "http://rubygems.org/gems/dynabix"
-  s.summary     = "A Rails 3.x gem for attribute serialization"
-  s.description = "A Rails 3.x gem for dynamic metadata via attribute serialization"
+  s.summary     = "An ActiveRecord 3.x Ruby gem for attribute serialization"
+  s.description = "Dynabix dynamically creates read/write accessors on ActiveRecord models for storing attributes in a serialized Hash"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "dynabix"

@@ -1,12 +1,130 @@
 Dynabix
 ========
 
-An ActiveRecord 3.x gem for attribute serialization
+An ActiveRecord 3.x Ruby gem for attribute serialization.
+
+"Dy-na-bix, tasty serialization attribute accessors for ActiveRecord"
+
+Overview
+--------
+
+Dynabix dynamically creates read/write accessors on ActiveRecord models for
+storing attributes in a serialized Hash.
+
+Installation
+------------
+
+Add to your Gemfile
+
+    gem "dynabix"
+
+Install the gem
+
+    bundle install
+
+Development
+-----------
+
+Get the source
+
+    cd workspace
+
+    git clone https://github.com/robertwahler/dynabix.git
+
+    cd dynabix
+
+Install the dependencies
+
+    bundle install
+
+Run the specs
+
+    bundle exec rake spec
+
+Autotest with Guard
+
+    bundle exec guard
+
+Usage Examples
+--------------
+
+### Ruby 1.8
+
+Add a text column "metadata" to your model migration
+
+
+    class AddMetadataToThings < ActiveRecord::Migration
+
+      def change
+        add_column :things, :metadata, :text
+      end
+
+    end
+
+Add accessors to your model using the default column name ":metadata", specify
+the attributes in a separate step.
+
+    class Thing < ActiveRecord::Base
+      has_metadata
+
+      # full accessors
+      metadata_accessor :breakfast_food, :wheat_products, :needs_milk
+
+      # read-only
+      metadata_reader :friends_with_spoons
+    end
+
+Specifying attributes for full attributes accessors in one step
+
+    class Thing < ActiveRecord::Base
+      has_metadata :metadata, :breakfast_food, :wheat_products, :needs_milk
+    end
+
+Using the new accessors
+
+    thing = Thing.new
+
+    thing.breakfast_food = 'a wheat like cereal"
+
+    # same thing, but not using the hash directly
+    thing.metadata[:breakfast_food] = 'a wheat like cereal"
+
+### Ruby 1.9+
+
+Dynabix under Ruby 1.9+ enables specifying multiple metadata columns on a model.
+
+Add text columns "cows" and "chickens" to your model migration
+
+    class AddMetadataToThings < ActiveRecord::Migration
+
+      def change
+        add_column :things, :cows, :text
+        add_column :things, :chickens, :text
+      end
+
+    end
+
+Specifying multiple metadata serializers (Ruby 1.9 only)
+
+    class Thing < ActiveRecord::Base
+      has_metadata :cows
+      has_metadata :chickens, :tasty, :feather_count
+
+      # read-only
+      cow_reader :likes_milk, :hates_eggs
+
+      # write-only
+      cow_writer :no_wheat_products
+
+      # extra full accessors for chickens
+      chicken_accessor :color, :likes_eggs
+    end
 
 Runtime dependencies
 --------------------
 
 * Activerecord 3.x
+
 
 Development dependencies
 ---------------------

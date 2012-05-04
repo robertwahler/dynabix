@@ -1,8 +1,51 @@
 require 'active_record'
 
+# An ActiveRecord 3.x Ruby gem for attribute serialization.
 module Dynabix
+
+  # Extending ActiveRecord with dynamic accessors for serialization
   module Metadata
 
+    # Set up the model for serialization to a HashWithIndifferentAccess.
+    #
+    # @example Using the default column name ":metadata", specify the attributes in a separate step
+    #
+    #    class Thing < ActiveRecord::Base
+    #      has_metadata
+    #
+    #      # full accessors
+    #      metadata_accessor :breakfast_food, :wheat_products, :needs_milk
+    #
+    #      # read-only
+    #      metadata_reader :friends_with_spoons
+    #    end
+    #
+    # @example Specifying attributes for full attributes accessors in one step
+    #
+    #    class Thing < ActiveRecord::Base
+    #      has_metadata :metadata, :breakfast_food, :wheat_products, :needs_milk
+    #    end
+    #
+    # @example Specifying multiple metadata serializers (Ruby 1.9 only)
+    #
+    #    class Thing < ActiveRecord::Base
+    #      has_metadata :cows
+    #      has_metadata :chickens, :tasty, :feather_count
+    #
+    #      # read-only
+    #      cow_reader :likes_milk, :hates_eggs
+    #
+    #      # write-only
+    #      cow_writer :no_wheat_products
+    #
+    #      # extra full accessors for chickens
+    #      chicken_accessor :color, :likes_eggs
+    #    end
+    #
+    # @param [Symbol] serializer, the symbolized name (:metadata) of the database text column used for serialization
+    # @param [Array<Symbol>] optional list of attribute names to add to the model as full accessors
+    #
+    # @return [void]
     def has_metadata(serializer=:metadata, *attributes)
       serialize(serializer, HashWithIndifferentAccess)
 
@@ -38,14 +81,18 @@ module Dynabix
         end
       end
 
-      # define each of the attributes for this serializer
+      # Define each of the attributes for this serializer
       attributes.each do |attr|
         create_reader(serializer, attr)
         create_writer(serializer, attr)
       end
     end
 
-    # this is the default accessor, user defined accessors are available under Ruby 1.9+
+    # Default read/write accessor, user defined accessors are available under Ruby 1.9+
+    #
+    # @param [Array<Symbol>] attributes
+    #
+    # @return [void]
     def metadata_accessor(*attrs)
       attrs.each do |attr|
         create_reader(:metadata, attr)
@@ -53,18 +100,27 @@ module Dynabix
       end
     end
 
+    # Default read accessor (getter), user defined accessors are available under Ruby 1.9+
+    #
+    # @param [Array<Symbol>] attributes
+    #
+    # @return [void]
     def metadata_reader(*attrs)
       attrs.each do |attr|
         create_reader(:metadata, attr)
       end
     end
 
+    # Default write accessor (setter), user defined accessors are available under Ruby 1.9+
+    #
+    # @param [Array<Symbol>] attributes
+    #
+    # @return [void]
     def metadata_writer(*attrs)
       attrs.each do |attr|
         create_writer(:metadata, attr)
       end
     end
-
 
     private
 
