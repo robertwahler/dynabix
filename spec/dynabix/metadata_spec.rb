@@ -132,6 +132,55 @@ describe Dynabix::Metadata do
         end
       end
     end
+  end
+
+
+  describe "using metadata with nested models" do
+
+    class Waterheater < ActiveRecord::Base
+      belongs_to :home
+      has_metadata :metadata, :efficiency
+    end
+
+    class Home < ActiveRecord::Base
+      has_many :waterheaters
+      accepts_nested_attributes_for :waterheaters
+    end
+
+    it "should save the child model metadata directly" do
+      home = Home.create(:name => "my home")
+      waterheater = home.waterheaters.new
+      waterheater.name = "system 1"
+      waterheater.efficiency = "90"
+      home.save!
+      home.waterheaters(reload=true).count.should == 1
+
+      waterheater = home.waterheaters.first
+      waterheater.name.should == "system 1"
+      waterheater.efficiency.should == "90"
+    end
+
+    it "should save the child model metadata via update_attributes" do
+      home = Home.create(:name => "my home")
+
+      waterheater = home.waterheaters.new
+      waterheater.name = "system 1"
+      waterheater.efficiency = "99"
+      home.save!
+      waterheater = home.waterheaters(reload=true).first
+      waterheater.name.should == "system 1"
+      waterheater.efficiency.should == "99"
+      home.reload
+
+      home.update_attributes({"name" => "new home name", "waterheaters_attributes" => {"0" => {"id" => waterheater.id, "efficiency" => "88"}} })
+
+      home.reload
+      home.name.should == "new home name"
+
+      waterheater = Waterheater.find waterheater.id
+      waterheater.efficiency.should == "88"
+    end
 
   end
+
 end

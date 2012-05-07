@@ -24,4 +24,18 @@ ActiveRecord::Schema.define(:version => 0) do
     t.timestamps
   end
 
+  create_table :homes, :force => true do |t|
+    t.text :name
+
+    t.timestamps
+  end
+
+  create_table :waterheaters, :force => true do |t|
+    t.text :name
+    t.integer :home_id
+    t.text :metadata
+
+    t.timestamps
+  end
+
 end
