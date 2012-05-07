@@ -137,6 +137,8 @@ module Dynabix
 
     def create_writer(serializer, attr)
       define_method("#{attr}=".to_sym) do |value|
+        # mark this attribute as dirty because AR will not mark serializers of nested models dirty
+        self.send("#{serializer}_will_change!")
         self[serializer][attr.to_sym] = value
       end
     end
