@@ -9,7 +9,8 @@ Overview
 --------
 
 Dynabix dynamically creates read/write accessors on ActiveRecord models for
-storing attributes in a serialized Hash.
+storing attributes in a serialized Hash. Read more in our introductory
+[blog article](http://www.gearheadforhire.com/articles/ruby/dynabix/activerecord-gem-for-attribute-serialization).
 
 Installation
 ------------
@@ -74,7 +75,7 @@ the attributes in a separate step.
       metadata_reader :friends_with_spoons
     end
 
-Specifying attributes for full attributes accessors in one step
+Specifying attributes for full attribute accessors in one step
 
     class Thing < ActiveRecord::Base
       has_metadata :metadata, :breakfast_food, :wheat_products, :needs_milk
@@ -86,7 +87,7 @@ Using the new accessors
 
     thing.breakfast_food = 'a wheat like cereal"
 
-    # same thing, but not using the hash directly
+    # same thing, but using the hash directly
     thing.metadata[:breakfast_food] = 'a wheat like cereal"
 
 ### Ruby 1.9+
@@ -111,13 +112,13 @@ Specifying multiple metadata serializers (Ruby 1.9 only)
       has_metadata :chickens, :tasty, :feather_count
 
       # read-only
-      cow_reader :likes_milk, :hates_eggs
+      cows_reader :likes_milk, :hates_eggs
 
       # write-only
-      cow_writer :no_wheat_products
+      cows_writer :no_wheat_products
 
       # extra full accessors for chickens
-      chicken_accessor :color, :likes_eggs
+      chickens_accessor :color, :likes_eggs
     end
 
 Runtime dependencies
