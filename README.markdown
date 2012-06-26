@@ -12,6 +12,16 @@ Dynabix dynamically creates read/write accessors on ActiveRecord models for
 storing attributes in a serialized Hash. Read more in our introductory
 [blog article](http://www.gearheadforhire.com/articles/ruby/dynabix/activerecord-gem-for-attribute-serialization).
 
+ActiveRecord's native 'store' method
+------------------------------------
+
+ActiveRecord as of 3.2.1, has a very similar native method
+[store](http://apidock.com/rails/ActiveRecord/Store).  Dynabix differs
+from store by providing a declarative DSL for defining multiple stores
+(Ruby 1.9+), has separate read/write accessors, and stores to the database
+as HashWithIndifferentAccess. Unless you need one of these specific
+features, using the native 'store' method is recommended.
+
 Installation
 ------------
 
