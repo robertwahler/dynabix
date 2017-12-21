@@ -162,4 +162,4 @@ bundle exec rake -T
 Copyright
 ---------
 
-Copyright (c) 2012 GearheadForHire, LLC. See [LICENSE](LICENSE) for details.
+Copyright (c) 2012-2017 GearheadForHire, LLC. See [LICENSE](LICENSE) for details.

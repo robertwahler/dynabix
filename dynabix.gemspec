@@ -33,14 +33,15 @@ Gem::Specification.new do |s|
   s.add_dependency "activerecord", "~> 3.0"
 
   s.add_development_dependency "bundler", ">= 1.0.14"
-  s.add_development_dependency "rspec", ">= 2.6.0"
+  s.add_development_dependency "rspec", "~> 2.9.0"
   s.add_development_dependency "aruba", "= 0.4.5"
-  s.add_development_dependency "rake", ">= 0.8.7"
+  s.add_development_dependency "rake", "~> 0.9.2"
   s.add_development_dependency "sqlite3-ruby", ">= 0.8.7"
 
-  # doc generation
-  s.add_development_dependency "yard", ">= 0.7.4"
-  s.add_development_dependency "redcarpet", ">= 1.17.2"
+  # lock downs from Arubu to prevent requiring Ruby 2.0+
+  s.add_development_dependency "cucumber", "~> 1.1.9"
+  s.add_dependency 'tins', '~> 1.6.0'
+  s.add_dependency 'term-ansicolor', '~> 1.0.7'
 
   # guard, watches files and runs specs and features
   #

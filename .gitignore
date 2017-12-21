@@ -1,8 +1,8 @@
+.DS_Store
 Gemfile.lock
 /pkg/
 /.bundle/
 /rdoc/
-/.yardoc/
 rerun.txt
 tags
 /tmp/
