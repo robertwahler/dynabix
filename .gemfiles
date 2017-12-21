@@ -2,9 +2,7 @@
 .gitattributes
 .gitignore
 .rspec
-.yardopts
 Gemfile
-Gemfile.lock
 Guardfile
 HISTORY.markdown
 LICENSE
